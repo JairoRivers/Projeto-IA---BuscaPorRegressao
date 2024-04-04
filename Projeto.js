@@ -1,7 +1,7 @@
-// Permite a leitura de entrada a partir do console.
+// Permite a leitura de entrada a partir do console
 const readline = require('readline');
 
-// Cria uma interface de leitura a partir do console.
+// Cria uma interface de leitura a partir do console
 const obj = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -54,7 +54,6 @@ function busca_com_retrocesso(inicial, objetivo, grafo) {
     while (LNE.length !== 0) {
         if (EC === objetivo) {
             return LE;
-            tabela(LE, LNE, BSS, EC);
         }
         if (!temFilhos(EC, BSS, LE, LNE, grafo)) {
             //Enquanto LE não está vazio e EC = o primeiro elemento de LE faça
@@ -73,10 +72,10 @@ function busca_com_retrocesso(inicial, objetivo, grafo) {
                 LNE.unshift(filhos[i]);
             }
 
-            EC = LNE[0]; // EC := primeiro elemento de LNE;
-            LE.unshift(EC); // Acrescenta EC a LE;
+            EC = LNE[0]; // EC := primeiro elemento de LNE
+            LE.unshift(EC); // Acrescenta EC a LE
         }
-        // Passo Atual
+        // Mostrar Passo Atual
         tabela(LE, LNE, BSS, EC);
     }
     return "FALHA";
@@ -84,12 +83,15 @@ function busca_com_retrocesso(inicial, objetivo, grafo) {
 
 // Verificação se EC tem filhos
 function temFilhos(EC, BSS, LE, LNE, grafo) {
+
+    // Obtém os filhos do estado atual no grafo
     const filhos = grafo[EC];
 
     if (filhos.length === 0) {
         return false;
 
     } else {
+        // Verifica se o filho não está em (BSS, LE, LNE), sendo assim valido
         for (let i = 0; i < filhos.length; i++) {
             if (!BSS.includes(filhos[i]) && !LE.includes(filhos[i]) && !LNE.includes(filhos[i])) {
                 return true;
