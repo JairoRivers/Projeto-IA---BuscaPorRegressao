@@ -15,12 +15,6 @@ function buscarCaminho(grafo) {
             return;
         }
 
-        if (!grafo[objetivo]) {
-            console.log("\nObjetivo inválido, digite outro objetivo\n");
-            buscarCaminho(grafo);
-            return;
-        }
-
         const caminho = busca_com_retrocesso('A', objetivo, grafo);
         console.log('\n', 'Caminho Resultado', caminho);
 
@@ -44,9 +38,9 @@ function tabela(LE, LNE, BSS, EC) {
 }
 
 function busca_com_retrocesso(inicial, objetivo, grafo) {
-    let LE = [inicial];             // Fila de estados sendo examinados
-    let LNE = [inicial];            // Fila de nós cujos descendentes ainda não foram gerados ou examinados
-    let BSS = [];                   // Fila de estados cujos descendentes não contém um nó objetivo
+    let LE = [inicial];             // Lista de estados sendo examinados
+    let LNE = [inicial];            // Lista de nós cujos descendentes ainda não foram gerados ou examinados
+    let BSS = [];                   // Lista de estados cujos descendentes não contém um nó objetivo
     let EC = inicial;               // Estado que foi adicionado mais recentemente a LE
 
     tabela(LE, LNE, BSS, EC);
